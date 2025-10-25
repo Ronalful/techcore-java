@@ -12,6 +12,7 @@
         <module name="task2" />
         <module name="task3" />
         <module name="module2" />
+        <module name="task4" />
       </profile>
     </annotationProcessing>
   </component>
