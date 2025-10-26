@@ -1,4 +1,4 @@
-package com.example.module5.task2To7;
+package com.example.module5.task2To8;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -45,5 +45,17 @@ public class BookController {
     public ResponseEntity<Book> addBookWithStatus(@RequestBody CreateBookDto request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(service.createBook(request));
+    }
+
+    @PutMapping("/books")
+    public ResponseEntity<Book> updateBook(@RequestBody CreateBookDto request) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED)
+                .body(service.updateBook(request));
+    }
+
+    @PatchMapping("/books")
+    public ResponseEntity<Book> patchBook(@RequestBody CreateBookDto request) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED)
+                .body(service.patchBook(request));
     }
 }

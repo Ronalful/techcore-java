@@ -1,9 +1,12 @@
-package com.example.module5.task2To7;
+package com.example.module5.task2To8;
 
 
 public class Book {
     private String title;
     private int year;
+
+    public Book() {
+    }
 
     public Book(String title, int year) {
         this.title = title;

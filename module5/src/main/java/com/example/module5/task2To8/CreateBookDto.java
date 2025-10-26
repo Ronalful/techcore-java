@@ -1,4 +1,4 @@
-package com.example.module5.task2To7;
+package com.example.module5.task2To8;
 
 public record CreateBookDto(
         String title,
