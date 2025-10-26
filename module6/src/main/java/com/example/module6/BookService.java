@@ -15,6 +15,7 @@ public class BookService {
                 Book.builder()
                         .title(request.title())
                         .year(request.year())
+                        .author(request.author())
                         .build()
         );
     }
@@ -24,6 +25,7 @@ public class BookService {
                 .orElseThrow(() -> new BookNotFoundException("Book not found with id " + request.id()));
         book.setTitle(request.title());
         book.setYear(request.year());
+        book.setAuthor(request.author());
         return repository.save(book);
     }
 
@@ -40,5 +42,14 @@ public class BookService {
         var book = repository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException("Book not found with id " + id));
         repository.delete(book);
+    }
+
+    public List<Book> findBookAuthor(String author) {
+        return repository.findByAuthor(author);
+    }
+
+    public Book findBookByTitleAndAuthor(String title, String author) {
+        return repository.findByTitleAndAuthor(title, author)
+                .orElseThrow(() -> new BookNotFoundException("Book not found with title " + title + " and author " + author));
     }
 }

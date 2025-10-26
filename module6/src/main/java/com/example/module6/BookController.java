@@ -39,4 +39,14 @@ public class BookController {
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findBookById(id));
     }
+
+    @GetMapping("/books/author/{author}")
+    public ResponseEntity<List<Book>> getBookByAuthor(@PathVariable String author) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findBookAuthor(author));
+    }
+
+    @GetMapping("/books/search")
+    public ResponseEntity<Book> getBookByTitleAndAuthor(@RequestParam String title, @RequestParam String author) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findBookByTitleAndAuthor(title, author));
+    }
 }
