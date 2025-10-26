@@ -59,4 +59,9 @@ public class BookController {
     public ResponseEntity<List<BookDto>> getBooksCorrect() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getBooksCorrect());
     }
+
+    @GetMapping("/books/search/{searchText}")
+    public ResponseEntity<List<BookDto>> getBooksBySearchText(@PathVariable String searchText) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getBooksBySearchText(searchText));
+    }
 }

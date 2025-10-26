@@ -84,4 +84,10 @@ public class BookService {
                 .map(mapper::fromBook)
                 .toList();
     }
+
+    public List<BookDto> getBooksBySearchText(String searchText) {
+        return bookRepository.findBySearchText(searchText).stream()
+                .map(mapper::fromBook)
+                .toList();
+    }
 }
