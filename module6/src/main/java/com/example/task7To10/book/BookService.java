@@ -1,7 +1,9 @@
 package com.example.task7To10.book;
 
+import com.example.task7To10.author.Author;
 import com.example.task7To10.author.AuthorNotFoundException;
 import com.example.task7To10.author.AuthorRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -89,5 +91,15 @@ public class BookService {
         return bookRepository.findBySearchText(searchText).stream()
                 .map(mapper::fromBook)
                 .toList();
+    }
+
+    @Transactional
+    public BookDto createBookWithAuthor(CreateBookDto request) {
+        var author = authorRepository.save(Author.builder()
+                .name(request.author())
+                .build());
+        int a = 2 / 0; // Тут будет ошибка
+        var book = bookRepository.save(mapper.toBookWithAuthor(request, author));
+        return mapper.fromBook(book);
     }
 }

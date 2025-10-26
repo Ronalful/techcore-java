@@ -64,4 +64,10 @@ public class BookController {
     public ResponseEntity<List<BookDto>> getBooksBySearchText(@PathVariable String searchText) {
         return ResponseEntity.status(HttpStatus.OK).body(service.getBooksBySearchText(searchText));
     }
+
+    @PostMapping("/new/books")
+    public ResponseEntity<BookDto> addBookWithAuthor(@RequestBody CreateBookDto request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(service.createBookWithAuthor(request));
+    }
 }
