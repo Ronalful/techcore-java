@@ -1,4 +1,4 @@
-package com.example.module5.task2To9;
+package com.example.module5.task2To10;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -63,5 +63,10 @@ public class BookController {
     public ResponseEntity<Void> deleteBookById(@PathVariable int id) {
         service.deleteBookById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/books/exception")
+    public ResponseEntity<Book> throwException() {
+        throw new BookNotFoundException("Книга не была найдена");
     }
 }
