@@ -1,4 +1,4 @@
-package com.example.module5.task2To5;
+package com.example.module5.task2To6;
 
 
 public class Book {
