@@ -1,4 +1,4 @@
-package com.example.module5.task2To8;
+package com.example.module5.task2To9;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -57,5 +57,11 @@ public class BookController {
     public ResponseEntity<Book> patchBook(@RequestBody CreateBookDto request) {
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body(service.patchBook(request));
+    }
+
+    @DeleteMapping("/books/{id}")
+    public ResponseEntity<Void> deleteBookById(@PathVariable int id) {
+        service.deleteBookById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

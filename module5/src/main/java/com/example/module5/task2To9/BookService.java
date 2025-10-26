@@ -1,4 +1,4 @@
-package com.example.module5.task2To8;
+package com.example.module5.task2To9;
 
 import org.springframework.stereotype.Service;
 
@@ -27,5 +27,9 @@ public class BookService {
             book.setYear(request.year());
         }
         return book;
+    }
+
+    public void deleteBookById(int id) {
+        System.out.println("Была удалена книга с id: " + id);
     }
 }
