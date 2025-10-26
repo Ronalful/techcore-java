@@ -1,6 +1,8 @@
-package com.example.module5.task2To6;
+package com.example.module5.task2To7;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -36,5 +38,12 @@ public class BookController {
     @PostMapping("/task6/books")
     public Book addBook(@RequestBody CreateBookDto request) {
         return service.createBook(request);
+    }
+
+    // Задание 7
+    @PostMapping("/task7/books")
+    public ResponseEntity<Book> addBookWithStatus(@RequestBody CreateBookDto request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(service.createBook(request));
     }
 }
