@@ -1,4 +1,4 @@
-package com.example.module6;
+package com.example.task7To10.book;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    List<Book> findByAuthor(String author);
+    List<Book> findByAuthor_Name(String name);
 
-    Optional<Book> findByTitleAndAuthor(String title, String author);
+    Optional<Book> findByTitleAndAuthor_Name(String title, String name);
 }

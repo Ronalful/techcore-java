@@ -1,4 +1,4 @@
-package com.example.module6;
+package com.example.task1To6;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

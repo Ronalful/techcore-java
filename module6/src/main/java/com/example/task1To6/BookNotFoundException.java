@@ -1,4 +1,4 @@
-package com.example.module6;
+package com.example.task1To6;
 
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(String message) {
