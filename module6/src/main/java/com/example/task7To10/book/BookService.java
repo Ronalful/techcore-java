@@ -64,4 +64,24 @@ public class BookService {
                 .orElseThrow(() -> new BookNotFoundException("Book not found with title " + title + " and author " + author));
         return mapper.fromBook(book);
     }
+
+    public List<BookDto> getBooksIncorrect() {
+        var books = bookRepository.findAll();
+        for (var book : books) {
+            System.out.println(book.getAuthor().getName());
+        }
+        return books.stream()
+                .map(mapper::fromBook)
+                .toList();
+    }
+
+    public List<BookDto> getBooksCorrect() {
+        var books = bookRepository.findAllFetch();
+        for (var book : books) {
+            System.out.println(book.getAuthor().getName());
+        }
+        return books.stream()
+                .map(mapper::fromBook)
+                .toList();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.task7To10.book;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,4 +11,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByAuthor_Name(String name);
 
     Optional<Book> findByTitleAndAuthor_Name(String title, String name);
+
+    @Query("select b from Book b join fetch b.author")
+    List<Book> findAllFetch();
 }

@@ -31,7 +31,7 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public ResponseEntity<List<BookDto>> getBookById() {
+    public ResponseEntity<List<BookDto>> getBooks() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getAllBooks());
     }
 
@@ -48,5 +48,15 @@ public class BookController {
     @GetMapping("/books/search")
     public ResponseEntity<BookDto> getBookByTitleAndAuthor(@RequestParam String title, @RequestParam String author) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findBookByTitleAndAuthor(title, author));
+    }
+
+    @GetMapping("/books/test/incorrect")
+    public ResponseEntity<List<BookDto>> getBooksIncorrect() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getBooksIncorrect());
+    }
+
+    @GetMapping("/books/test/correct")
+    public ResponseEntity<List<BookDto>> getBooksCorrect() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getBooksCorrect());
     }
 }
