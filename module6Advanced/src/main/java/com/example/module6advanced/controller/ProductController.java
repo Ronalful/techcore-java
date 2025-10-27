@@ -1,6 +1,7 @@
 package com.example.module6advanced.controller;
 
 import com.example.module6advanced.dto.CreateProductDto;
+import com.example.module6advanced.dto.UpdateProductDto;
 import com.example.module6advanced.entitiy.Product;
 import com.example.module6advanced.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +42,17 @@ public class ProductController {
     public ResponseEntity<Product> findById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(service.findById(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<Product> updateProduct(@RequestBody UpdateProductDto request) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.updateProduct(request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        service.deleteProduct(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
