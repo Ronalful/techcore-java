@@ -46,8 +46,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="module4" options="-parameters" />
-      <module name="module5" options="-parameters" />
-      <module name="module6" options="-parameters" />
+      <module name="module5" options="" />
+      <module name="module6" options="" />
       <module name="module6Advanced" options="-parameters" />
     </option>
   </component>
