@@ -5,6 +5,7 @@ import com.example.module6advanced.entitiy.Product;
 import com.example.module6advanced.repository.CategoryRepository;
 import com.example.module6advanced.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +34,11 @@ public class ProductService {
 
     public List<Product> searchProducts(String name, Long categoryId) {
         return productRepository.findByNameLikeAndCategoryId(name, categoryId);
+    }
+
+    @Cacheable(value = "products", key = "#id")
+    public Product findById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 }
