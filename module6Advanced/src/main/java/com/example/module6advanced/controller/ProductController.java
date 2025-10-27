@@ -1,8 +1,10 @@
 package com.example.module6advanced.controller;
 
 import com.example.module6advanced.dto.CreateProductDto;
+import com.example.module6advanced.dto.ProductDetailsDto;
 import com.example.module6advanced.dto.UpdateProductDto;
 import com.example.module6advanced.entitiy.Product;
+import com.example.module6advanced.service.ProductDetailsService;
 import com.example.module6advanced.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService service;
+    private final ProductDetailsService productDetailsService;
 
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody CreateProductDto request) {
@@ -54,5 +57,11 @@ public class ProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         service.deleteProduct(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/{id}/details")
+    public ResponseEntity<ProductDetailsDto> getProductDetails(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(productDetailsService.getProductDetails(id));
     }
 }
