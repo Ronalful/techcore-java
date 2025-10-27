@@ -24,9 +24,25 @@ services:
     networks:
       - network
 
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: db
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+    networks:
+      - network
+
 networks:
   network:
     driver: bridge
 
 volumes:
   postgres:
+  mongo:
