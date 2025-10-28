@@ -2,6 +2,8 @@ package com.example.module7.book;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -72,5 +74,11 @@ public class BookController {
     public ResponseEntity<BookDto> addBookWithAuthor(@Valid @RequestBody CreateBookDto request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(service.createBookWithAuthor(request));
+    }
+
+    //Task 6
+    @GetMapping("/books/paging")
+    public ResponseEntity<Page<BookDto>> getBooks(Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAllBooks(pageable));
     }
 }

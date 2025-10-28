@@ -5,6 +5,8 @@ import com.example.module7.author.AuthorNotFoundException;
 import com.example.module7.author.AuthorRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
+    private final PagingBookRepository pagingRepository;
     private final AuthorRepository authorRepository;
     private final BookMapper mapper;
 
@@ -100,5 +103,11 @@ public class BookService {
         int a = 2 / 0; // Тут будет ошибка
         var book = bookRepository.save(mapper.toBookWithAuthor(request, author));
         return mapper.fromBook(book);
+    }
+
+    //Task 6
+    public Page<BookDto> getAllBooks(Pageable pageable) {
+        return pagingRepository.findAll(pageable)
+                .map(mapper::fromBook);
     }
 }
