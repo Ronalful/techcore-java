@@ -30,6 +30,7 @@ public class JwtTokenProvider {
         signInKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
     }
 
+    //Task 6
     public String generateToken(String username) {
         return buildToken(new HashMap<>(), username, jwtExpiration);
     }
@@ -49,6 +50,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+    //Task 6
     public boolean isTokenValid(String token) {
         return extractExpiration(token).after(new Date());
     }

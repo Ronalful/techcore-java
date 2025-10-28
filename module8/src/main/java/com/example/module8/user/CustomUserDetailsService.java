@@ -14,6 +14,7 @@ import java.util.Collections;
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
+    //Task 3
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)

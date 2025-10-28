@@ -31,6 +31,7 @@ public class ApplicationConfig {
                         .requestMatchers("/api/auth/**").permitAll() //Task 2
                         .anyRequest().authenticated()
                 )
+                //Task 9
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
@@ -38,11 +39,13 @@ public class ApplicationConfig {
         return http.build();
     }
 
+    //Task 3
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    //Task 3
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();

@@ -29,6 +29,7 @@ public class BookController {
                 .body(service.updateBook(request));
     }
 
+    //Task 10
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/books/{id}")
     public ResponseEntity<Void> deleteBookById(@PathVariable Long id) {
@@ -36,6 +37,7 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    //Task 10
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/books")
     public ResponseEntity<List<BookDto>> getBooks() {
