@@ -22,8 +22,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Void> login(@RequestBody @Valid RegisterRequest request) {
-        service.login(request);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public ResponseEntity<AuthResponse> login(@RequestBody @Valid RegisterRequest request) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.login(request));
     }
 }
