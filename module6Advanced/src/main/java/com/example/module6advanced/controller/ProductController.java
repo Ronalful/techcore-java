@@ -32,6 +32,7 @@ public class ProductController {
                 .body(service.findAll());
     }
 
+    //Task 2
     @GetMapping("/search")
     public ResponseEntity<List<Product>> searchProducts(
             @RequestParam String name,
@@ -59,6 +60,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    //Task 10
     @GetMapping("/{id}/details")
     public ResponseEntity<ProductDetailsDto> getProductDetails(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK)

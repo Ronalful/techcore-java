@@ -38,12 +38,14 @@ public class ProductService {
         return productRepository.findByNameLikeAndCategoryId(name, categoryId);
     }
 
+    //Task 5
     @Cacheable(value = "products", key = "#id")
     public Product findById(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
+    //Task 6
     @CacheEvict(value = "products", key = "#request.id()")
     public Product updateProduct(UpdateProductDto request) {
         var product = productRepository.findById(request.id())
@@ -53,6 +55,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    //Task 6
     @CacheEvict(value = "products", key = "#id")
     public void deleteProduct(Long id) {
         var product = productRepository.findById(id)

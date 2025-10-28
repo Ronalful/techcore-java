@@ -3,6 +3,7 @@ package com.example.module6advanced.entitiy;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//Task 8
 @Document(collection = "reviews")
 @Getter
 @Setter

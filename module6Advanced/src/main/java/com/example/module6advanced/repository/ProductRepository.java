@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    //Task 2
     @Query("select p from Product p where lower(p.name) like lower(concat('%', :name, '%')) " +
             "and p.category.id = :categoryId")
     List<Product> findByNameLikeAndCategoryId(String name, Long categoryId);
