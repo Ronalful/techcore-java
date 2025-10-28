@@ -1,28 +1,39 @@
 package com.example.module7.book;
 
 import com.example.module7.author.Author;
-import com.example.module7.author.AuthorDto;
-import org.springframework.stereotype.Service;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Service
-public class BookMapper {
-    public Book toBookWithAuthor(CreateBookDto request, Author author) {
-        return Book.builder()
-                .title(request.title())
-                .publicationYear(request.publicationYear())
-                .author(author)
-                .build();
-    }
 
-    public BookDto fromBook(Book book) {
-        return new BookDto(
-                book.getId(),
-                book.getTitle(),
-                book.getPublicationYear(),
-                new AuthorDto(
-                        book.getAuthor().getId(),
-                        book.getAuthor().getName()
-                )
-        );
-    }
+//Task 10
+// Этот код был убран и заменен
+//@Service
+//public class BookMapper {
+//    public Book toBookWithAuthor(CreateBookDto request, Author author) {
+//        return Book.builder()
+//                .title(request.title())
+//                .publicationYear(request.publicationYear())
+//                .author(author)
+//                .build();
+//    }
+//
+//    public BookDto fromBook(Book book) {
+//        return new BookDto(
+//                book.getId(),
+//                book.getTitle(),
+//                book.getPublicationYear(),
+//                new AuthorDto(
+//                        book.getAuthor().getId(),
+//                        book.getAuthor().getName()
+//                )
+//        );
+//    }
+//}
+
+@Mapper(componentModel = "spring")
+public interface BookMapper {
+    @Mapping(target = "author", source = "author")
+    Book toBookWithAuthor(CreateBookDto dto, Author author);
+
+    BookDto fromBook(Book book);
 }
