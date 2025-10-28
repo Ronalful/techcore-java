@@ -16,12 +16,14 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService service;
 
+    //Task 9
     @PostMapping
     public ResponseEntity<ProductReview> addReview(@RequestBody CreateReviewDto request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(service.addReview(request));
     }
 
+    //Task 9
     @GetMapping("/{productId}")
     public ResponseEntity<List<ProductReview>> getReviewsForProduct(@PathVariable Long productId) {
         return ResponseEntity.status(HttpStatus.OK)
