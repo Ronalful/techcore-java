@@ -67,6 +67,7 @@ public class BookService {
         return mapper.fromBook(book);
     }
 
+    //Task 8
     public List<BookDto> getBooksIncorrect() {
         var books = bookRepository.findAll();
         for (var book : books) {
@@ -77,6 +78,7 @@ public class BookService {
                 .toList();
     }
 
+    //Task 8
     public List<BookDto> getBooksCorrect() {
         var books = bookRepository.findAllFetch();
         for (var book : books) {
@@ -87,12 +89,14 @@ public class BookService {
                 .toList();
     }
 
+    // Task 9
     public List<BookDto> getBooksBySearchText(String searchText) {
         return bookRepository.findBySearchText(searchText).stream()
                 .map(mapper::fromBook)
                 .toList();
     }
 
+    // Task 10
     @Transactional
     public BookDto createBookWithAuthor(CreateBookDto request) {
         var author = authorRepository.save(Author.builder()

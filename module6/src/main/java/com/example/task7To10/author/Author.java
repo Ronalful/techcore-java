@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.util.List;
 
+//Task 7
 @Entity
 @Getter
 @Setter

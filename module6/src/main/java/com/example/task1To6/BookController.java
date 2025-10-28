@@ -40,11 +40,13 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.OK).body(service.findBookById(id));
     }
 
+    //Task 6
     @GetMapping("/books/author/{author}")
     public ResponseEntity<List<Book>> getBookByAuthor(@PathVariable String author) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findBookAuthor(author));
     }
 
+    //Task 6
     @GetMapping("/books/search")
     public ResponseEntity<Book> getBookByTitleAndAuthor(@RequestParam String title, @RequestParam String author) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findBookByTitleAndAuthor(title, author));

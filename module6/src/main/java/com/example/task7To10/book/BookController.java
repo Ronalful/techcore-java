@@ -50,21 +50,25 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.OK).body(service.findBookByTitleAndAuthor(title, author));
     }
 
+    //Task 8
     @GetMapping("/books/test/incorrect")
     public ResponseEntity<List<BookDto>> getBooksIncorrect() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getBooksIncorrect());
     }
 
+    //Task 8
     @GetMapping("/books/test/correct")
     public ResponseEntity<List<BookDto>> getBooksCorrect() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getBooksCorrect());
     }
 
+    //Task 9
     @GetMapping("/books/search/{searchText}")
     public ResponseEntity<List<BookDto>> getBooksBySearchText(@PathVariable String searchText) {
         return ResponseEntity.status(HttpStatus.OK).body(service.getBooksBySearchText(searchText));
     }
 
+    //Task 10
     @PostMapping("/new/books")
     public ResponseEntity<BookDto> addBookWithAuthor(@RequestBody CreateBookDto request) {
         return ResponseEntity.status(HttpStatus.CREATED)

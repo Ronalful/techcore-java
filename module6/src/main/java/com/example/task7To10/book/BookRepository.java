@@ -12,9 +12,11 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Optional<Book> findByTitleAndAuthor_Name(String title, String name);
 
+    //Task 8
     @Query("select b from Book b join fetch b.author")
     List<Book> findAllFetch();
 
+    //Task 9
     @Query("SELECT b FROM Book b WHERE lower(b.title) LIKE lower(concat('%', :searchText, '%')) ORDER BY b.publicationYear DESC")
     List<Book> findBySearchText(String searchText);
 }
