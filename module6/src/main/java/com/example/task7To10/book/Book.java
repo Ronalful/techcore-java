@@ -17,6 +17,7 @@ public class Book {
     private String title;
     private Integer publicationYear;
 
+    //Task 7
     @ManyToOne
     private Author author;
 }
