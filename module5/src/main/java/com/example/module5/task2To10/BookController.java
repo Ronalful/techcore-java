@@ -10,17 +10,20 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     private final BookService service;
 
+    // Задание 2
     @GetMapping("/book")
     public Book book() {
         return new Book("Peace and War", 1867);
     }
 
+    // Задание 3
     @GetMapping("/books/{id}")
     public Book getBookById(@PathVariable int id) {
         System.out.println("Id книги: " + id);
         return new Book("Crime and Punishment", 1866);
     }
 
+    // Задание 4
     @GetMapping("/books/search")
     public Book getBookById(@RequestParam(required = false) String title) {
         System.out.println("Параметр title: " + title);
@@ -47,24 +50,28 @@ public class BookController {
                 .body(service.createBook(request));
     }
 
+    //Задание 8
     @PutMapping("/books")
     public ResponseEntity<Book> updateBook(@RequestBody CreateBookDto request) {
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body(service.updateBook(request));
     }
 
+    //Задание 8
     @PatchMapping("/books")
     public ResponseEntity<Book> patchBook(@RequestBody CreateBookDto request) {
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body(service.patchBook(request));
     }
 
+    // Задание 9
     @DeleteMapping("/books/{id}")
     public ResponseEntity<Void> deleteBookById(@PathVariable int id) {
         service.deleteBookById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    // Задание 10
     @GetMapping("/books/exception")
     public ResponseEntity<Book> throwException() {
         throw new BookNotFoundException("Книга не была найдена");
