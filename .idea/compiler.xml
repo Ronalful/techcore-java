@@ -32,7 +32,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for module6Advanced" enabled="true">
+      <profile name="Annotation profile for module7" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -40,15 +40,17 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
         <module name="module6Advanced" />
+        <module name="module7" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="module4" options="-parameters" />
-      <module name="module5" options="" />
-      <module name="module6" options="" />
+      <module name="module5" options="-parameters" />
+      <module name="module6" options="-parameters" />
       <module name="module6Advanced" options="-parameters" />
+      <module name="module7" options="-parameters" />
     </option>
   </component>
 </project>
