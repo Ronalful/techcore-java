@@ -50,7 +50,6 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    //Task 6
     public boolean isTokenValid(String token) {
         return extractExpiration(token).after(new Date());
     }
