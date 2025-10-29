@@ -65,4 +65,14 @@ public class BookServiceNewTest {
 
         Assertions.assertEquals(testBookDto, result);
     }
+
+    @Test
+    public void testDeleteBookById() {
+        Mockito.when(bookRepository.findById(1L)).thenReturn(Optional.of(testBook));
+        Mockito.doNothing().when(bookRepository).delete(testBook);
+
+        bookService.deleteBookById(1L);
+
+        Mockito.verify(bookRepository, Mockito.times(1)).delete(testBook);
+    }
 }
