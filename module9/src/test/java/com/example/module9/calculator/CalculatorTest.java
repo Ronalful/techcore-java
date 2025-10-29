@@ -14,18 +14,21 @@ class CalculatorTest {
         calculator = new Calculator();
     }
 
+    //Task 1
     @Test
     void testAdd() {
         Assertions.assertEquals(3, calculator.add(1, 2));
         Assertions.assertEquals(1, calculator.add(-1, 2));
     }
 
+    //Task 1
     @Test
     void testSubtract() {
         Assertions.assertEquals(-1, calculator.subtract(1, 2));
         Assertions.assertEquals(1, calculator.subtract(-1, -2));
     }
 
+    //Task 2
     @Test
     void testDivide() {
         Assertions.assertEquals(3, calculator.divide(6, 2));

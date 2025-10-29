@@ -32,6 +32,7 @@ class BookControllerTest {
     @MockitoBean
     private JwtTokenFilter jwtTokenFilter;
 
+    //Task 7
     @Test
     public void testGetBookById() throws Exception {
         var testBookDto = new BookDto(
@@ -51,6 +52,7 @@ class BookControllerTest {
                 .andExpect(jsonPath("$.title").value("Test Book"));
     }
 
+    //Task 8
     @Test
     public void testCorrectAddBookWithStatus() throws Exception {
         var testAuthorDto = new AuthorDto(
@@ -82,6 +84,7 @@ class BookControllerTest {
                 .andExpect(jsonPath("$.author.name").value("Jon Doe"));
     }
 
+    //Task 8
     @Test
     public void testIncorrectAddBookWithStatus() throws Exception {
         var testCreateBookDto = new CreateBookDto(

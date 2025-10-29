@@ -56,6 +56,7 @@ public class BookServiceNewTest {
         );
     }
 
+    //Task 4
     @Test
     public void testFindBookById() {
         Mockito.when(bookRepository.findById(1L)).thenReturn(Optional.of(testBook));
@@ -66,6 +67,7 @@ public class BookServiceNewTest {
         Assertions.assertEquals(testBookDto, result);
     }
 
+    //Task 5
     @Test
     public void testDeleteBookById() {
         Mockito.when(bookRepository.findById(1L)).thenReturn(Optional.of(testBook));
