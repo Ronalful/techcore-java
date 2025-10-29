@@ -11,13 +11,13 @@
         <module name="module2Advanced" />
         <module name="core-lib" />
         <module name="task8" />
-        <module name="task10" />
         <module name="module1" />
+        <module name="app-console" />
+        <module name="module2" />
+        <module name="task10" />
         <module name="task1" />
         <module name="task2" />
         <module name="task3" />
-        <module name="app-console" />
-        <module name="module2" />
         <module name="task4" />
       </profile>
       <profile name="Annotation profile for module6Advanced" enabled="true">
@@ -32,7 +32,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for module8" enabled="true">
+      <profile name="Annotation profile for module9" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -41,6 +41,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
         </processorPath>
+        <module name="module9" />
         <module name="module8" />
         <module name="module7" />
       </profile>
@@ -54,6 +55,7 @@
       <module name="module6Advanced" options="-parameters" />
       <module name="module7" options="-parameters" />
       <module name="module8" options="-parameters" />
+      <module name="module9" options="-parameters" />
     </option>
   </component>
 </project>

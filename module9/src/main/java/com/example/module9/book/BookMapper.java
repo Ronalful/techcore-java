@@ -1,6 +1,6 @@
-package com.example.module8.book;
+package com.example.module9.book;
 
-import com.example.module8.author.Author;
+import com.example.module9.author.Author;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
