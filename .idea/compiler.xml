@@ -32,7 +32,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for module9" enabled="true">
+      <profile name="Annotation profile for module10" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -41,14 +41,16 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
         </processorPath>
+        <module name="module10" />
+        <module name="module7" />
         <module name="module9" />
         <module name="module8" />
-        <module name="module7" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="module10" options="-parameters" />
       <module name="module4" options="-parameters" />
       <module name="module5" options="-parameters" />
       <module name="module6" options="-parameters" />
