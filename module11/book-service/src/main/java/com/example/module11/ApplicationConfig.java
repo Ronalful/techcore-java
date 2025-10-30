@@ -3,6 +3,7 @@ package com.example.module11;
 import com.example.module11.jwt.JwtTokenFilter;
 import com.example.module11.user.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -58,6 +59,7 @@ public class ApplicationConfig {
     }
 
     @Bean
+    @LoadBalanced //Task 7
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
