@@ -5,9 +5,10 @@ services:
     container_name: app
     image: my-app:latest
     ports:
-      - 8080:8080
+      - "8080:8080"
     depends_on:
       - postgres
+      - eureka-service
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db
       SPRING_DATASOURCE_USERNAME: admin
@@ -21,7 +22,18 @@ services:
     container_name: my-notification
     image: my-notification:latest
     ports:
-      - 8081:8080
+      - "8081:8080"
+    depends_on:
+      - eureka-service
+
+
+  eureka-service:
+    build:
+      context: /eureka-server/.
+    container_name: eureka-service
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
 
   postgres:
     container_name: postgresql
@@ -31,7 +43,7 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: db
     ports:
-      - 5000:5432
+      - "5000:5432"
     volumes:
       - ./pgdata:/var/lib/postgresql/data
 
