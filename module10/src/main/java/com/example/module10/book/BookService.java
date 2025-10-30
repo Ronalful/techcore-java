@@ -5,9 +5,11 @@ import com.example.module10.author.AuthorNotFoundException;
 import com.example.module10.author.AuthorRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.loader.WebappClassLoader;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -19,12 +21,15 @@ public class BookService {
     private final AuthorRepository authorRepository;
     private final BookMapper mapper;
 
+    private final RestTemplate restTemplate;
+
     public BookDto createBook(CreateBookDto request) {
         var author = authorRepository.findByName(request.author())
                 .orElseThrow(() -> new AuthorNotFoundException("Author not found"));
         var book = bookRepository.save(
                 mapper.toBookWithAuthor(request, author)
         );
+        restTemplate.postForEntity("http://localhost:8081/notify", null, String.class);
         return mapper.fromBook(book);
     }
 
