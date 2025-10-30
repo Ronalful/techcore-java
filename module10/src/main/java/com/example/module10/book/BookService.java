@@ -29,7 +29,8 @@ public class BookService {
         var book = bookRepository.save(
                 mapper.toBookWithAuthor(request, author)
         );
-        restTemplate.postForEntity("http://localhost:8081/notify", null, String.class);
+        //Task 9
+        restTemplate.postForEntity("http://notification:8081/notify", null, String.class);
         return mapper.fromBook(book);
     }
 
