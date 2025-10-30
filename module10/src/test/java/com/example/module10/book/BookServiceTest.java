@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
@@ -25,6 +26,8 @@ class BookServiceTest {
     private AuthorRepository authorRepository;
     @Mock
     private BookMapper mapper;
+    @Mock
+    private RestTemplate restTemplate;
 
     private Book testBook;
     private BookDto testBookDto;
@@ -37,7 +40,8 @@ class BookServiceTest {
                 bookRepository,
                 pagingRepository,
                 authorRepository,
-                mapper
+                mapper,
+                restTemplate
         );
 
         testAuthor = Author.builder()

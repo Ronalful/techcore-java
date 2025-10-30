@@ -9,6 +9,7 @@ import com.example.module10.user.Role;
 import com.example.module10.user.User;
 import com.example.module10.user.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -19,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.web.client.RestTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,7 +32,7 @@ class Module10ApplicationTests {
     private int port;
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Autowired
     private JwtTokenProvider tokenProvider;
@@ -61,7 +63,7 @@ class Module10ApplicationTests {
         var requestAuthor = new CreateAuthorDto(
                 "Jon Doe"
         );
-
+        
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
 
