@@ -29,6 +29,7 @@ public class BookService {
                 mapper.toBookWithAuthor(request, author)
         );
         notificationClient.sendNotification();
+        notificationClient.sendNotificationWithDiscoveryClient();
         return mapper.fromBook(book);
     }
 
