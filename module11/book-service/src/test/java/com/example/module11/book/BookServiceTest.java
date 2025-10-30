@@ -4,6 +4,7 @@ import com.example.module11.author.Author;
 import com.example.module11.author.AuthorDto;
 import com.example.module11.author.AuthorRepository;
 import com.example.module11.notification.NotificationClient;
+import com.example.module11.notification.NotificationClientOpenFeign;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,8 @@ class BookServiceTest {
     private BookMapper mapper;
     @Mock
     private NotificationClient notificationClient;
+    @Mock
+    NotificationClientOpenFeign notificationClientOpenFeign;
 
     private Book testBook;
     private BookDto testBookDto;
@@ -42,7 +45,8 @@ class BookServiceTest {
                 pagingRepository,
                 authorRepository,
                 mapper,
-                notificationClient
+                notificationClient,
+                notificationClientOpenFeign
         );
 
         testAuthor = Author.builder()

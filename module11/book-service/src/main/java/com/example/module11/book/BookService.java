@@ -4,6 +4,7 @@ import com.example.module11.author.Author;
 import com.example.module11.author.AuthorNotFoundException;
 import com.example.module11.author.AuthorRepository;
 import com.example.module11.notification.NotificationClient;
+import com.example.module11.notification.NotificationClientOpenFeign;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ public class BookService {
     private final AuthorRepository authorRepository;
     private final BookMapper mapper;
     private final NotificationClient notificationClient;
+    private final NotificationClientOpenFeign notificationClientOpenFeign;
 
     public BookDto createBook(CreateBookDto request) {
         var author = authorRepository.findByName(request.author())
@@ -30,6 +32,7 @@ public class BookService {
         );
         notificationClient.sendNotification();
 //        notificationClient.sendNotificationWithDiscoveryClient(); //Task 6
+        notificationClientOpenFeign.doNotification(); //Task 9
         return mapper.fromBook(book);
     }
 
