@@ -11,6 +11,7 @@
         <module name="module2Advanced" />
         <module name="core-lib" />
         <module name="task8" />
+        <module name="eureka-server (1)" />
         <module name="module1" />
         <module name="eureka-server" />
         <module name="app-console" />
@@ -21,7 +22,20 @@
         <module name="task2" />
         <module name="task3" />
         <module name="notification (1)" />
+        <module name="gateway" />
         <module name="task4" />
+        <module name="notification (2)" />
+      </profile>
+      <profile name="Annotation profile for module7" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
+        </processorPath>
+        <module name="module7" />
       </profile>
       <profile name="Annotation profile for module6Advanced" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -35,18 +49,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for module7" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
-        </processorPath>
-        <module name="module7" />
-      </profile>
-      <profile name="Annotation profile for book-service" enabled="true">
+      <profile name="Annotation profile for module9" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -56,8 +59,9 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
         </processorPath>
         <module name="module10" />
-        <module name="book-service" />
+        <module name="book-service (1)" />
         <module name="module9" />
+        <module name="book-service" />
         <module name="module8" />
       </profile>
     </annotationProcessing>
@@ -65,7 +69,10 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="book-service" options="-parameters" />
+      <module name="book-service (1)" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="eureka-server (1)" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="module10" options="-parameters" />
       <module name="module4" options="-parameters" />
       <module name="module5" options="-parameters" />
@@ -76,6 +83,7 @@
       <module name="module9" options="-parameters" />
       <module name="notification" options="-parameters" />
       <module name="notification (1)" options="-parameters" />
+      <module name="notification (2)" options="-parameters" />
     </option>
   </component>
 </project>
