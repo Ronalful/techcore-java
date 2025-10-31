@@ -1,0 +1,48 @@
+services:
+  app:
+    build:
+      context: /book-service/.
+    container_name: app
+    image: my-app:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - eureka-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+
+  notification:
+    build:
+      context: /notification/.
+    image: my-notification:latest
+    ports:
+      - "8081-8082:8080"
+    depends_on:
+      - eureka-service
+
+
+  eureka-service:
+    build:
+      context: /eureka-server/.
+    container_name: eureka-service
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
+
+  postgres:
+    container_name: postgresql
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: db
+    ports:
+      - "5000:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+
