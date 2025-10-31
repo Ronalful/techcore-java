@@ -5,16 +5,24 @@ spring:
   cloud:
     gateway:
       routes:
+#        - id: book-service-books
+#          uri: lb://BOOK-SERVICE
+#          predicates:
+#            - Path=/api/books/**
+#
+
+#        Task 8
         - id: book-service-books
           uri: lb://BOOK-SERVICE
           predicates:
-            - Path=/api/books/**
+            - Path=/library/v1/books/**
+          filters:
+            - RewritePath=/library/v1/books/(?<segment>.*), /api/books/${segment}
 
         - id: book-service-auth
           uri: lb://BOOK-SERVICE
           predicates:
             - Path=/api/auth/**
-
 server:
   port: 8222
 
