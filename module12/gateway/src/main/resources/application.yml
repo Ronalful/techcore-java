@@ -19,10 +19,24 @@ spring:
           filters:
             - RewritePath=/library/v1/books/(?<segment>.*), /api/books/${segment}
 
+        #   Task 10
+        - id: login-route
+          uri: lb://BOOK-SERVICE
+          predicates:
+            - Path=/api/auth/login
+          filters:
+            - name: RequestRateLimiter
+              args:
+                key-resolver: "#{@ipKeyResolver}"
+                rate-limiter: "#{@inMemoryRateLimiter}"
+
         - id: book-service-auth
           uri: lb://BOOK-SERVICE
           predicates:
             - Path=/api/auth/**
+
+
+
 server:
   port: 8222
 
