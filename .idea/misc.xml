@@ -30,6 +30,7 @@
         <option value="$PROJECT_DIR$/module12/book-service/pom.xml" />
         <option value="$PROJECT_DIR$/module12/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/module12/notification/pom.xml" />
+        <option value="$PROJECT_DIR$/module12/gateway/pom.xml" />
       </list>
     </option>
   </component>
