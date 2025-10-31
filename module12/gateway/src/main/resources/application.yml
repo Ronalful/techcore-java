@@ -5,10 +5,15 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: book-service-route
+        - id: book-service-books
           uri: lb://BOOK-SERVICE
           predicates:
             - Path=/api/books/**
+
+        - id: book-service-auth
+          uri: lb://BOOK-SERVICE
+          predicates:
+            - Path=/api/auth/**
 
 server:
   port: 8222
@@ -18,3 +23,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka-service:8761/eureka/
+
+
+app:
+  jwtSecret: 5121359nWAALSJDHAKDASLKM65E2583rFxWdASDHJAJ41243SJKDSJAKDajshdjh
+  jwtExpiration: 30000000

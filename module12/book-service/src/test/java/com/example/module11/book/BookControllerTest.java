@@ -2,7 +2,6 @@ package com.example.module11.book;
 
 import com.example.module11.author.AuthorDto;
 import com.example.module11.author.AuthorNotFoundException;
-import com.example.module11.jwt.JwtTokenFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -28,8 +27,6 @@ class BookControllerTest {
 
     @MockitoBean
     private BookService bookService;
-    @MockitoBean
-    private JwtTokenFilter jwtTokenFilter;
 
     //Task 7
     @Test
