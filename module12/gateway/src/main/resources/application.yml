@@ -6,9 +6,15 @@ spring:
     gateway:
       routes:
         - id: book-service-route
-          uri: http://localhost:8080
+          uri: lb://BOOK-SERVICE
           predicates:
             - Path=/api/books/**
 
 server:
   port: 8222
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
