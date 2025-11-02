@@ -9,6 +9,7 @@ services:
     depends_on:
       - postgres
       - eureka-service
+      - config-server
     environment:
       - SERVER_PORT=8081
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/db
@@ -23,6 +24,7 @@ services:
       - "8082"
     depends_on:
       - eureka-service
+      - config-server
     environment:
       - SERVER_PORT=8082
 
@@ -43,10 +45,19 @@ services:
       - eureka-service
       - book-service
       - notification-service
+      - config-server
     ports:
       - "8080:8080"
     environment:
       - SERVER_PORT=8080
+
+  config-server:
+    build: /config-server/.
+    image: config-server:latest
+    expose:
+      - "8888"
+    environment:
+      - SERVER_PORT=8888
 
   postgres:
     container_name: postgresql
