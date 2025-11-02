@@ -20,7 +20,7 @@ spring:
             - name: RequestRateLimiter
               args:
                 key-resolver: "#{@ipKeyResolver}"
-                rate-limiter: "#{@inMemoryRateLimiter}"
+                rate-limiter: "#{@inMemoryRateLimiter}"1
 
         - id: book-service-auth
           uri: lb://BOOK-SERVICE

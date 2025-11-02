@@ -56,6 +56,8 @@ services:
     image: config-server:latest
     expose:
       - "8888"
+    depends_on:
+      - eureka-service
     environment:
       - SERVER_PORT=8888
 
