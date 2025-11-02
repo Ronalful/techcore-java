@@ -53,7 +53,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for module9" enabled="true">
+      <profile name="Annotation profile for book-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -62,8 +62,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
         </processorPath>
-        <module name="module10" />
         <module name="book-service (2)" />
+        <module name="module10" />
         <module name="book-service (1)" />
         <module name="module9" />
         <module name="book-service" />
