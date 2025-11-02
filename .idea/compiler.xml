@@ -19,6 +19,7 @@
         <module name="module2" />
         <module name="gateway (1)" />
         <module name="notification" />
+        <module name="config-server" />
         <module name="task10" />
         <module name="task1" />
         <module name="notification (3)" />
@@ -75,6 +76,7 @@
       <module name="book-service" options="-parameters" />
       <module name="book-service (1)" options="-parameters" />
       <module name="book-service (2)" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server (1)" options="-parameters" />
       <module name="eureka-server (2)" options="-parameters" />
