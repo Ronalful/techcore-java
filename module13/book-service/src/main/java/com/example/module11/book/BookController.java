@@ -1,5 +1,7 @@
 package com.example.module11.book;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +16,17 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@RefreshScope
 public class BookController {
     private final BookService service;
+
+    @Value("${app.value}")
+    private String value;
+
+    @GetMapping("/books/value")
+    public ResponseEntity<String> getValue() {
+        return new ResponseEntity<>(value, HttpStatus.OK);
+    }
 
     @PostMapping("/books")
     public ResponseEntity<BookDto> addBookWithStatus(@Valid @RequestBody CreateBookDto request) {
