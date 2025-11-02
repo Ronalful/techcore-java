@@ -31,6 +31,11 @@
         <option value="$PROJECT_DIR$/module12/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/module12/notification/pom.xml" />
         <option value="$PROJECT_DIR$/module12/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/module13/book-service/pom.xml" />
+        <option value="$PROJECT_DIR$/module13/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/module13/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/module13/notification/pom.xml" />
+        <option value="$PROJECT_DIR$/module13/config-server/pom.xml" />
       </list>
     </option>
   </component>
