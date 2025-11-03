@@ -6,6 +6,7 @@ import com.example.module11.author.AuthorRepository;
 import com.example.module11.notification.NotificationClient;
 import com.example.module11.notification.NotificationClientOpenFeign;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class BookService {
 
     @CircuitBreaker(name = "notificationService",  fallbackMethod = "myFallbackMethod") //Task 3-5
     @Retry(name = "notificationService") //Task 7
+    @RateLimiter(name = "notificationService") //Task 9
     public BookDto createBook(CreateBookDto request) {
         var author = authorRepository.findByName(request.author())
                 .orElseThrow(() -> new AuthorNotFoundException("Author not found"));
