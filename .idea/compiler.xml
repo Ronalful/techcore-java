@@ -16,6 +16,7 @@
         <module name="eureka-server" />
         <module name="gateway (1)" />
         <module name="notification" />
+        <module name="gateway (3)" />
         <module name="task10" />
         <module name="task1" />
         <module name="config-server (1)" />
@@ -24,15 +25,18 @@
         <module name="task3" />
         <module name="task4" />
         <module name="notification (2)" />
+        <module name="eureka-server (4)" />
         <module name="eureka-server (2)" />
         <module name="module1" />
         <module name="app-console" />
         <module name="module2" />
         <module name="config-server" />
+        <module name="notification (5)" />
         <module name="gateway (2)" />
         <module name="notification (3)" />
         <module name="notification (1)" />
         <module name="gateway" />
+        <module name="config-server (2)" />
       </profile>
       <profile name="Annotation profile for module7" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -57,7 +61,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for book-service" enabled="true">
+      <profile name="Annotation profile for module9" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -70,6 +74,7 @@
         <module name="module9" />
         <module name="book-service" />
         <module name="module8" />
+        <module name="book-service (4)" />
         <module name="book-service (3)" />
         <module name="book-service (2)" />
         <module name="book-service (1)" />
@@ -82,15 +87,19 @@
       <module name="book-service (1)" options="-parameters" />
       <module name="book-service (2)" options="-parameters" />
       <module name="book-service (3)" options="-parameters" />
+      <module name="book-service (4)" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="config-server (1)" options="-parameters" />
+      <module name="config-server (2)" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server (1)" options="-parameters" />
       <module name="eureka-server (2)" options="-parameters" />
       <module name="eureka-server (3)" options="-parameters" />
+      <module name="eureka-server (4)" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="gateway (1)" options="-parameters" />
       <module name="gateway (2)" options="-parameters" />
+      <module name="gateway (3)" options="-parameters" />
       <module name="module10" options="-parameters" />
       <module name="module4" options="-parameters" />
       <module name="module5" options="-parameters" />
@@ -104,6 +113,7 @@
       <module name="notification (2)" options="-parameters" />
       <module name="notification (3)" options="-parameters" />
       <module name="notification (4)" options="-parameters" />
+      <module name="notification (5)" options="-parameters" />
     </option>
   </component>
 </project>
