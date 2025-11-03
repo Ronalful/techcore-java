@@ -6,8 +6,10 @@ import com.example.module11.author.AuthorRepository;
 import com.example.module11.notification.NotificationClient;
 import com.example.module11.notification.NotificationClientOpenFeign;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BookService {
     private final BookRepository bookRepository;
     private final PagingBookRepository pagingRepository;
@@ -25,7 +28,7 @@ public class BookService {
     private final NotificationClient notificationClient;
     private final NotificationClientOpenFeign notificationClientOpenFeign;
 
-    @CircuitBreaker(name = "notificationService")
+    @CircuitBreaker(name = "notificationService",  fallbackMethod = "myFallbackMethod") //Task 3-5
     public BookDto createBook(CreateBookDto request) {
         var author = authorRepository.findByName(request.author())
                 .orElseThrow(() -> new AuthorNotFoundException("Author not found"));
@@ -34,6 +37,16 @@ public class BookService {
         );
         notificationClient.sendNotification();
         notificationClientOpenFeign.doNotification();
+
+        return mapper.fromBook(book);
+    }
+
+    //Task 5
+    public BookDto myFallbackMethod(CreateBookDto request, Throwable t) {
+        var author = authorRepository.findByName(request.author())
+                .orElseThrow(() -> new AuthorNotFoundException("Author not found"));
+
+        var book = bookRepository.save(mapper.toBookWithAuthor(request, author));
         return mapper.fromBook(book);
     }
 
