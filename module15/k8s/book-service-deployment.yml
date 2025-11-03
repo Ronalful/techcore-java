@@ -22,6 +22,17 @@ spec:
             - name: config-volume
               mountPath: /config/application.properties
               subPath: application.properties
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/db
+            - name: SPRING_DATASOURCE_USERNAME
+              value: admin
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-password-secret
+                  key: POSTGRES_PASSWORD
+
       volumes:
         - name: config-volume
           configMap:
