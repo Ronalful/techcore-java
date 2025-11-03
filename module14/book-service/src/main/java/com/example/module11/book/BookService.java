@@ -5,6 +5,7 @@ import com.example.module11.author.AuthorNotFoundException;
 import com.example.module11.author.AuthorRepository;
 import com.example.module11.notification.NotificationClient;
 import com.example.module11.notification.NotificationClientOpenFeign;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,7 @@ public class BookService {
     private final NotificationClient notificationClient;
     private final NotificationClientOpenFeign notificationClientOpenFeign;
 
+    @CircuitBreaker(name = "notificationService")
     public BookDto createBook(CreateBookDto request) {
         var author = authorRepository.findByName(request.author())
                 .orElseThrow(() -> new AuthorNotFoundException("Author not found"));

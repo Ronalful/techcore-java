@@ -8,9 +8,13 @@ spring:
         - id: book-service-books
           uri: lb://BOOK-SERVICE
           predicates:
-            - Path=/library/v1/books/**
-          filters:
-            - RewritePath=/library/v1/books/(?<segment>.*), /api/books/${segment}
+            - Path=/api/books/**
+
+        - id: book-service-authors
+          uri: lb://BOOK-SERVICE
+          predicates:
+            - Path=/api/authors/**
+
 
         - id: login-route
           uri: lb://BOOK-SERVICE
