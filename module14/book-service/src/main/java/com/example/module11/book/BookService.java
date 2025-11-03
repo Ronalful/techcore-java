@@ -29,6 +29,7 @@ public class BookService {
     private final NotificationClientOpenFeign notificationClientOpenFeign;
 
     @CircuitBreaker(name = "notificationService",  fallbackMethod = "myFallbackMethod") //Task 3-5
+    @Retry(name = "notificationService") //Task 7
     public BookDto createBook(CreateBookDto request) {
         var author = authorRepository.findByName(request.author())
                 .orElseThrow(() -> new AuthorNotFoundException("Author not found"));
