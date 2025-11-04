@@ -22,8 +22,13 @@ spec:
             - name: config-volume
               mountPath: /config/application.properties
               subPath: application.properties
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: config-server
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: "false"
       volumes:
         - name: config-volume
           configMap:
-            name: config-server-map
+            name: config-map
 

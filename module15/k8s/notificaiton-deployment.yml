@@ -6,14 +6,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: notification
+      app: notification-service
   template:
     metadata:
       labels:
-        app: notification
+        app: notification-service
     spec:
       containers:
-        - name: notification
+        - name: notification-service
           image: my-notification:latest
           imagePullPolicy: IfNotPresent
           ports:
@@ -22,6 +22,13 @@ spec:
             - name: config-volume
               mountPath: /config/application.properties
               subPath: application.properties
+          env:
+            - name: SERVER_PORT
+              value: "8082"
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: notification-service
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: "false"
       volumes:
         - name: config-volume
           configMap:

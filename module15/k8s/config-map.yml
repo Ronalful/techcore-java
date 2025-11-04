@@ -4,4 +4,4 @@ metadata:
   name: config-map
 data:
   application.properties: |
-    eureka.client.service-url.defaultZone=http://eureka-service:8761/eureka/
+    eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
