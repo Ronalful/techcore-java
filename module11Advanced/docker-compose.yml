@@ -62,5 +62,28 @@ services:
     ports:
       - 5000:5432
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
+
+  redis:
+    container_name: redis
+    image: redis:alpine
+    command: redis-server
+    ports:
+      - 6379:6379
+
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: db
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  postgres:
+  mongo:
 
