@@ -42,6 +42,16 @@ services:
     depends_on:
       - eureka-server
 
+  gateway:
+    build: /gateway/.
+    image: gateway:latest
+    depends_on:
+      - eureka-server
+      - book-service
+      - notification-service
+    ports:
+      - "8222:8222"
+
   postgres:
     container_name: postgresql
     image: postgres:14-alpine

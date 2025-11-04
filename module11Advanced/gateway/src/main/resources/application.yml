@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+#            Task 7
+            - id: book-service-books
+              uri: http://book-service:8080
+              predicates:
+                - Path=/api/books/**
+
+
+
+server:
+  port: 8222
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+app:
+  jwtSecret: 5121359nWAALSJDHAKDASLKM65E2583rFxWdASDHJAJ41243SJKDSJAKDajshdjh
+  jwtExpiration: 30000000
