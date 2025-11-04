@@ -17,6 +17,11 @@ spring:
               predicates:
                 - Path=/api/books/**
 
+            - id: book-service-auth
+              uri: lb://BOOK-SERVICE
+              predicates:
+                - Path=/api/auth/**
+
 
 server:
   port: 8222
