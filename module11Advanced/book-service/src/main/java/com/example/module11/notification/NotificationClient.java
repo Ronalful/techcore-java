@@ -10,7 +10,8 @@ public class NotificationClient {
     private final RestTemplate restTemplate;
 
     public void sendNotification() {
-        restTemplate.postForEntity("http://notification-service:8081/notify", null, String.class);
+        //Task 4
+        restTemplate.postForEntity("http://NOTIFICATION-SERVICE/notify", null, String.class);
     }
 
 }
