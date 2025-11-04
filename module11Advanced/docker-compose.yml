@@ -23,6 +23,14 @@ services:
     ports:
       - 8081:8081
 
+  eureka-server:
+    build:
+      context: /eureka-server/.
+    container_name: eureka-server
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
+
   postgres:
     container_name: postgresql
     image: postgres:14-alpine

@@ -14,6 +14,7 @@
         <module name="eureka-server (3)" />
         <module name="eureka-server (1)" />
         <module name="eureka-server" />
+        <module name="eureka-server (5)" />
         <module name="gateway (1)" />
         <module name="notification" />
         <module name="notification (6)" />
@@ -62,7 +63,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for book-service" enabled="true">
+      <profile name="Annotation profile for module9" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -74,8 +75,8 @@
         <module name="module10" />
         <module name="module9" />
         <module name="book-service" />
-        <module name="book-service (5)" />
         <module name="module8" />
+        <module name="book-service (5)" />
         <module name="book-service (4)" />
         <module name="book-service (3)" />
         <module name="book-service (2)" />
@@ -99,6 +100,7 @@
       <module name="eureka-server (2)" options="-parameters" />
       <module name="eureka-server (3)" options="-parameters" />
       <module name="eureka-server (4)" options="-parameters" />
+      <module name="eureka-server (5)" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="gateway (1)" options="-parameters" />
       <module name="gateway (2)" options="-parameters" />
