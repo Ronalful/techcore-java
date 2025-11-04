@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+        - name: notification-service
+          image: my-notification:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8082
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config/application.properties
+              subPath: application.properties
+          env:
+            - name: SERVER_PORT
+              value: "8082"
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: notification-service
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: "false"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config-map
+
