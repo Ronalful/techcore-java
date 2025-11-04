@@ -8,6 +8,7 @@ services:
       - 8080:8080
     depends_on:
       - postgres
+      - eureka-server
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db
       SPRING_DATASOURCE_USERNAME: admin
@@ -20,6 +21,8 @@ services:
       context: /notification/.
     container_name: my-notification
     image: my-notification:latest
+    depends_on:
+      - eureka-server
     ports:
       - 8081:8081
 
@@ -30,6 +33,14 @@ services:
     image: eureka-server:latest
     ports:
       - "8761:8761"
+
+  config-server:
+    build: /config-server/.
+    image: config-server:latest
+    ports:
+      - "8888:8888"
+    depends_on:
+      - eureka-server
 
   postgres:
     container_name: postgresql
