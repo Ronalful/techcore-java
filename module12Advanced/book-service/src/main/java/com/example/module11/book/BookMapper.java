@@ -1,6 +1,7 @@
 package com.example.module11.book;
 
 import com.example.module11.author.Author;
+import com.example.module11.kafka.BookCreatedEvent;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -11,4 +12,5 @@ public interface BookMapper {
     Book toBookWithAuthor(CreateBookDto dto, Author author);
 
     BookDto fromBook(Book book);
+    BookCreatedEvent toBookCreatedEvent(Book book);
 }

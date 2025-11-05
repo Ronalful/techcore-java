@@ -3,7 +3,7 @@ package com.example.module11.book;
 import com.example.module11.author.Author;
 import com.example.module11.author.AuthorNotFoundException;
 import com.example.module11.author.AuthorRepository;
-import com.example.module11.notification.NotificationClient;
+import com.example.module11.kafka.BookKafkaProducer;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,7 +19,7 @@ public class BookService {
     private final PagingBookRepository pagingRepository;
     private final AuthorRepository authorRepository;
     private final BookMapper mapper;
-    private final NotificationClient notificationClient;
+    private final BookKafkaProducer bookKafkaProducer;
 
     public BookDto createBook(CreateBookDto request) {
         var author = authorRepository.findByName(request.author())
@@ -27,7 +27,7 @@ public class BookService {
         var book = bookRepository.save(
                 mapper.toBookWithAuthor(request, author)
         );
-        notificationClient.sendNotification();
+        bookKafkaProducer.sendBookCreatedEvent(mapper.toBookCreatedEvent(book));
         return mapper.fromBook(book);
     }
 
