@@ -17,6 +17,11 @@
     <file url="file://$PROJECT_DIR$/module12/eureka-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/module12/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/module12/notification/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/module12Advanced/book-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/module12Advanced/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/module12Advanced/eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/module12Advanced/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/module12Advanced/notification/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/module13/book-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/module13/config-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/module13/eureka-server/src/main/java" charset="UTF-8" />
