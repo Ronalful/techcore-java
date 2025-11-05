@@ -7,11 +7,6 @@ spring:
       server:
         webflux:
           routes:
-#            Task 7
-#            - id: book-service-books
-#              uri: http://book-service:8080
-#              predicates:
-            #Task 8
             - id: book-service-books
               uri: lb://BOOK-SERVICE
               predicates:
@@ -21,6 +16,11 @@ spring:
               uri: lb://BOOK-SERVICE
               predicates:
                 - Path=/api/auth/**
+
+            - id: book-service-authors
+              uri: lb://BOOK-SERVICE
+              predicates:
+                - Path=/api/authors/**
 
 
 server:
