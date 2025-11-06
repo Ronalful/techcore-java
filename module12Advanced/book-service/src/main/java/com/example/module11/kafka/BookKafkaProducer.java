@@ -11,6 +11,6 @@ public class BookKafkaProducer {
     private static final String TOPIC = "book_events";
 
     public void sendBookCreatedEvent(BookCreatedEvent event) {
-        kafkaTemplate.send(TOPIC, event);
+        kafkaTemplate.send(TOPIC, event.id().toString(), event);
     }
 }
