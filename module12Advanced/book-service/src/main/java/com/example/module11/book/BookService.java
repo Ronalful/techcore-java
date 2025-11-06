@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,7 @@ public class BookService {
         return mapper.fromBook(book);
     }
 
+    @Cacheable(value = "books", key = "#id")
     public BookDto findBookById(Long id) {
         var book = bookRepository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException("Book not found with id " + id));
