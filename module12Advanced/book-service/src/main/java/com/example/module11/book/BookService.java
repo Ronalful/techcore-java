@@ -4,12 +4,19 @@ import com.example.module11.author.Author;
 import com.example.module11.author.AuthorNotFoundException;
 import com.example.module11.author.AuthorRepository;
 import com.example.module11.kafka.BookKafkaProducer;
+import com.example.module11.outboxtable.AggregateType;
+import com.example.module11.outboxtable.EventType;
+import com.example.module11.outboxtable.Outbox;
+import com.example.module11.outboxtable.OutboxRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -20,17 +27,31 @@ public class BookService {
     private final AuthorRepository authorRepository;
     private final BookMapper mapper;
     private final BookKafkaProducer bookKafkaProducer;
+    private final OutboxRepository outboxRepository;
 
-    public BookDto createBook(CreateBookDto request) {
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    public BookDto createBook(CreateBookDto request) throws JsonProcessingException {
         var author = authorRepository.findByName(request.author())
                 .orElseThrow(() -> new AuthorNotFoundException("Author not found"));
         var book = bookRepository.save(
                 mapper.toBookWithAuthor(request, author)
         );
-        bookKafkaProducer.sendBookCreatedEvent(mapper.toBookCreatedEvent(book));
-        bookKafkaProducer.sendBrokenMessage(); //Task 8
+//        bookKafkaProducer.sendBookCreatedEvent(mapper.toBookCreatedEvent(book));
+//        bookKafkaProducer.sendBrokenMessage(); //Task 8
+
+        //Task 9
+        outboxRepository.save(Outbox.builder()
+                        .aggregateType(AggregateType.BOOK)
+                        .aggregateId(book.getId())
+                        .type(EventType.BOOK_CREATED)
+                        .payload(objectMapper.writeValueAsString(mapper.toBookCreatedEvent(book)))
+                        .createdAt(LocalDateTime.now())
+                        .processed(false)
+                .build());
         return mapper.fromBook(book);
     }
+
 
     public BookDto updateBook(UpdateBookDto request) {
         var book = bookRepository.findById(request.id())

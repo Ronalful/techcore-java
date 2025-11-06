@@ -1,5 +1,6 @@
 package com.example.module11.book;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class BookController {
     private final BookService service;
 
     @PostMapping("/books")
-    public ResponseEntity<BookDto> addBookWithStatus(@Valid @RequestBody CreateBookDto request) {
+    public ResponseEntity<BookDto> addBookWithStatus(@Valid @RequestBody CreateBookDto request) throws JsonProcessingException {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(service.createBook(request));
     }
