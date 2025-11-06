@@ -28,6 +28,7 @@ public class BookService {
                 mapper.toBookWithAuthor(request, author)
         );
         bookKafkaProducer.sendBookCreatedEvent(mapper.toBookCreatedEvent(book));
+        bookKafkaProducer.sendBrokenMessage(); //Task 8
         return mapper.fromBook(book);
     }
 
