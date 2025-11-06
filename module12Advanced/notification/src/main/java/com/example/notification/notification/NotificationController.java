@@ -1,4 +1,4 @@
-package com.example.notification;
+package com.example.notification.notification;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
