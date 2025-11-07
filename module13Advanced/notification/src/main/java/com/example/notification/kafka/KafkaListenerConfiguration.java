@@ -2,14 +2,19 @@ package com.example.notification.kafka;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.TopicPartition;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
+import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.listener.ContainerProperties;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
 import org.springframework.kafka.listener.DefaultErrorHandler;
 import org.springframework.util.backoff.FixedBackOff;
+
+import java.util.Map;
 
 @Configuration
 @Slf4j
@@ -28,7 +33,12 @@ public class KafkaListenerConfiguration {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory(
+    public ConsumerFactory<String, Object> consumerFactory(KafkaProperties kafkaProperties) {
+        return new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties());
+    }
+
+    @Bean
+    ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory(
             ConsumerFactory<String, Object> consumerFactory,
             DefaultErrorHandler errorHandler
     ) {
@@ -36,6 +46,16 @@ public class KafkaListenerConfiguration {
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         factory.setCommonErrorHandler(errorHandler);
+        factory.getContainerProperties().setObservationEnabled(true);
+
+        ContainerProperties containerProps = factory.getContainerProperties();
+        containerProps.setMicrometerTags(Map.of(
+                "topic", "kafka_receive ",
+                "app-name", "kafka"
+        ));
+        containerProps.setMicrometerTagsProvider(
+                record -> Map.of("kafka-slug", record.key().toString())
+        );
         return factory;
     }
 }
