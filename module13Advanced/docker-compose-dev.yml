@@ -1,0 +1,128 @@
+services:
+  book-service:
+    build:
+      context: /book-service/.
+      dockerfile: Dockerfile-dev
+    container_name: app
+    image: my-app:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+      - eureka-server
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+    volumes:
+      - ./book-service:/app
+      - ~/.m2:/root/.m2
+
+  notification-service:
+    build:
+      context: /notification/.
+      dockerfile: Dockerfile-dev
+    image: my-notification:latest
+    depends_on:
+      - eureka-server
+    ports:
+      - "8081-8090:8081"
+    volumes:
+      - ./notification:/app
+      - ~/.m2:/root/.m2
+
+  eureka-server:
+    build:
+      context: /eureka-server/.
+      dockerfile: Dockerfile-dev
+    container_name: eureka-server
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
+    volumes:
+      - ./eureka-server:/app
+      - ~/.m2:/root/.m2
+
+  config-server:
+    build:
+      context: /config-server/.
+      dockerfile: Dockerfile-dev
+    image: config-server:latest
+    ports:
+      - "8888:8888"
+    depends_on:
+      - eureka-server
+    volumes:
+      - ./config-server:/app
+      - ~/.m2:/root/.m2
+
+  gateway:
+    build:
+      context: /gateway/.
+      dockerfile: Dockerfile-dev
+    image: gateway:latest
+    depends_on:
+      - eureka-server
+      - book-service
+      - notification-service
+    ports:
+      - "8222:8222"
+    volumes:
+      - ./gateway:/app
+      - ~/.m2:/root/.m2
+
+  postgres:
+    container_name: postgresql
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: db
+    ports:
+      - 5000:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  redis:
+    container_name: redis
+    image: redis:alpine
+    command: redis-server
+    ports:
+      - 6379:6379
+
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: db
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    restart: unless-stopped
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+
+volumes:
+  postgres:
+  mongo:
+
