@@ -19,6 +19,7 @@
         <module name="eureka-server (5)" />
         <module name="gateway (1)" />
         <module name="notification" />
+        <module name="notification (8)" />
         <module name="notification (6)" />
         <module name="gateway (5)" />
         <module name="gateway (3)" />
@@ -142,6 +143,7 @@
       <module name="notification (5)" options="-parameters" />
       <module name="notification (6)" options="-parameters" />
       <module name="notification (7)" options="-parameters" />
+      <module name="notification (8)" options="-parameters" />
     </option>
   </component>
 </project>

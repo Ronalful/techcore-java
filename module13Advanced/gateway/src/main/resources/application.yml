@@ -11,16 +11,29 @@ spring:
               uri: lb://BOOK-SERVICE
               predicates:
                 - Path=/api/books/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: bookServiceCircuitBreaker
 
             - id: book-service-auth
               uri: lb://BOOK-SERVICE
               predicates:
                 - Path=/api/auth/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: bookServiceAuthCircuitBreaker
+
 
             - id: book-service-authors
               uri: lb://BOOK-SERVICE
               predicates:
                 - Path=/api/authors/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: bookServiceAuthorCircuitBreaker
 
 
 server:
