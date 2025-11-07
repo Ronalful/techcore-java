@@ -15,6 +15,7 @@ spring:
                 - name: CircuitBreaker
                   args:
                     name: bookServiceCircuitBreaker
+                    fallbackUri: forward:/fallback/books
 
             - id: book-service-auth
               uri: lb://BOOK-SERVICE
@@ -24,6 +25,7 @@ spring:
                 - name: CircuitBreaker
                   args:
                     name: bookServiceAuthCircuitBreaker
+                    fallbackUri: forward:/fallback/books
 
 
             - id: book-service-authors
@@ -34,6 +36,7 @@ spring:
                 - name: CircuitBreaker
                   args:
                     name: bookServiceAuthorCircuitBreaker
+                    fallbackUri: forward:/fallback/books
 
 
 server:
