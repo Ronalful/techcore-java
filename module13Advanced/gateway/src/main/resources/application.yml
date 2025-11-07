@@ -50,6 +50,12 @@ spring:
                     retries: 3
                     methods: POST, PUT, DELETE, PATCH
 
+resilience4j:
+  bulkhead:
+    instances:
+      bookServiceCircuitBreaker:
+        maxConcurrentCalls: 5
+        maxWaitDuration: 0
 
 server:
   port: 8222
