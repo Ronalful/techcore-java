@@ -16,6 +16,10 @@ spring:
                   args:
                     name: bookServiceCircuitBreaker
                     fallbackUri: forward:/fallback/books
+                - name: Retry
+                  args:
+                    retries: 3
+                    methods: POST, PUT, DELETE, PATCH
 
             - id: book-service-auth
               uri: lb://BOOK-SERVICE
@@ -26,6 +30,10 @@ spring:
                   args:
                     name: bookServiceAuthCircuitBreaker
                     fallbackUri: forward:/fallback/books
+                - name: Retry
+                  args:
+                    retries: 3
+                    methods: POST, PUT, DELETE, PATCH
 
 
             - id: book-service-authors
@@ -37,6 +45,10 @@ spring:
                   args:
                     name: bookServiceAuthorCircuitBreaker
                     fallbackUri: forward:/fallback/books
+                - name: Retry
+                  args:
+                    retries: 3
+                    methods: POST, PUT, DELETE, PATCH
 
 
 server:
