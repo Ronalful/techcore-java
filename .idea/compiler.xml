@@ -13,13 +13,17 @@
         <module name="task8" />
         <module name="eureka-server (3)" />
         <module name="eureka-server (1)" />
+        <module name="gateway (6)" />
+        <module name="eureka-server (7)" />
         <module name="eureka-server" />
         <module name="eureka-server (5)" />
         <module name="gateway (1)" />
         <module name="notification" />
+        <module name="notification (8)" />
         <module name="notification (6)" />
         <module name="gateway (5)" />
         <module name="gateway (3)" />
+        <module name="config-server (5)" />
         <module name="task10" />
         <module name="task1" />
         <module name="config-server (1)" />
@@ -79,6 +83,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
         </processorPath>
         <module name="module10" />
+        <module name="book-service (7)" />
         <module name="module9" />
         <module name="book-service" />
         <module name="book-service (6)" />
@@ -100,11 +105,13 @@
       <module name="book-service (4)" options="-parameters" />
       <module name="book-service (5)" options="-parameters" />
       <module name="book-service (6)" options="-parameters" />
+      <module name="book-service (7)" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="config-server (1)" options="-parameters" />
       <module name="config-server (2)" options="-parameters" />
       <module name="config-server (3)" options="-parameters" />
       <module name="config-server (4)" options="-parameters" />
+      <module name="config-server (5)" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server (1)" options="-parameters" />
       <module name="eureka-server (2)" options="-parameters" />
@@ -112,12 +119,14 @@
       <module name="eureka-server (4)" options="-parameters" />
       <module name="eureka-server (5)" options="-parameters" />
       <module name="eureka-server (6)" options="-parameters" />
+      <module name="eureka-server (7)" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="gateway (1)" options="-parameters" />
       <module name="gateway (2)" options="-parameters" />
       <module name="gateway (3)" options="-parameters" />
       <module name="gateway (4)" options="-parameters" />
       <module name="gateway (5)" options="-parameters" />
+      <module name="gateway (6)" options="-parameters" />
       <module name="module10" options="-parameters" />
       <module name="module4" options="-parameters" />
       <module name="module5" options="-parameters" />
@@ -134,6 +143,7 @@
       <module name="notification (5)" options="-parameters" />
       <module name="notification (6)" options="-parameters" />
       <module name="notification (7)" options="-parameters" />
+      <module name="notification (8)" options="-parameters" />
     </option>
   </component>
 </project>
