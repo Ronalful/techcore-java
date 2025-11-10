@@ -61,6 +61,11 @@
         <option value="$PROJECT_DIR$/module13Advanced/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/module13Advanced/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/module13Advanced/notification/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/book-service/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/notification/pom.xml" />
       </list>
     </option>
   </component>

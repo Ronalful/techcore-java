@@ -34,8 +34,10 @@
         <module name="task4" />
         <module name="notification (2)" />
         <module name="eureka-server (4)" />
+        <module name="gateway (7)" />
         <module name="eureka-server (2)" />
         <module name="module1" />
+        <module name="eureka-server (8)" />
         <module name="app-console" />
         <module name="module2" />
         <module name="eureka-server (6)" />
@@ -43,8 +45,10 @@
         <module name="config-server" />
         <module name="notification (5)" />
         <module name="gateway (4)" />
+        <module name="notification (9)" />
         <module name="gateway (2)" />
         <module name="config-server (4)" />
+        <module name="config-server (6)" />
         <module name="notification (3)" />
         <module name="notification (1)" />
         <module name="gateway" />
@@ -73,7 +77,7 @@
         <module name="module4" />
         <module name="module6" />
       </profile>
-      <profile name="Annotation profile for book-service" enabled="true">
+      <profile name="Annotation profile for module9" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -83,6 +87,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
         </processorPath>
         <module name="module10" />
+        <module name="book-service (8)" />
         <module name="book-service (7)" />
         <module name="module9" />
         <module name="book-service" />
@@ -106,12 +111,14 @@
       <module name="book-service (5)" options="-parameters" />
       <module name="book-service (6)" options="-parameters" />
       <module name="book-service (7)" options="-parameters" />
+      <module name="book-service (8)" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="config-server (1)" options="-parameters" />
       <module name="config-server (2)" options="-parameters" />
       <module name="config-server (3)" options="-parameters" />
       <module name="config-server (4)" options="-parameters" />
       <module name="config-server (5)" options="-parameters" />
+      <module name="config-server (6)" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server (1)" options="-parameters" />
       <module name="eureka-server (2)" options="-parameters" />
@@ -120,6 +127,7 @@
       <module name="eureka-server (5)" options="-parameters" />
       <module name="eureka-server (6)" options="-parameters" />
       <module name="eureka-server (7)" options="-parameters" />
+      <module name="eureka-server (8)" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="gateway (1)" options="-parameters" />
       <module name="gateway (2)" options="-parameters" />
@@ -127,6 +135,7 @@
       <module name="gateway (4)" options="-parameters" />
       <module name="gateway (5)" options="-parameters" />
       <module name="gateway (6)" options="-parameters" />
+      <module name="gateway (7)" options="-parameters" />
       <module name="module10" options="-parameters" />
       <module name="module4" options="-parameters" />
       <module name="module5" options="-parameters" />
@@ -144,6 +153,7 @@
       <module name="notification (6)" options="-parameters" />
       <module name="notification (7)" options="-parameters" />
       <module name="notification (8)" options="-parameters" />
+      <module name="notification (9)" options="-parameters" />
     </option>
   </component>
 </project>
