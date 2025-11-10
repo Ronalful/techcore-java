@@ -68,6 +68,14 @@
         <option value="$PROJECT_DIR$/module14Advanced/notification/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/module14Advanced/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/module14Advanced/notification/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="ms-21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

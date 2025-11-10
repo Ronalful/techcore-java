@@ -34,10 +34,8 @@
         <module name="task4" />
         <module name="notification (2)" />
         <module name="eureka-server (4)" />
-        <module name="gateway (7)" />
         <module name="eureka-server (2)" />
         <module name="module1" />
-        <module name="eureka-server (8)" />
         <module name="app-console" />
         <module name="module2" />
         <module name="eureka-server (6)" />
@@ -45,10 +43,8 @@
         <module name="config-server" />
         <module name="notification (5)" />
         <module name="gateway (4)" />
-        <module name="notification (9)" />
         <module name="gateway (2)" />
         <module name="config-server (4)" />
-        <module name="config-server (6)" />
         <module name="notification (3)" />
         <module name="notification (1)" />
         <module name="gateway" />
@@ -100,6 +96,12 @@
         <module name="book-service (1)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="config-server (6)" target="17" />
+      <module name="eureka-server (8)" target="17" />
+      <module name="gateway (7)" target="17" />
+      <module name="notification (9)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
